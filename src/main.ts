@@ -5,7 +5,10 @@ import { GithubConnector } from './github-connector';
 import { JiraConnector } from './jira-connector';
 
 async function run(): Promise<void> {
+  console.log('INside run');
+
   const { FAIL_WHEN_JIRA_ISSUE_NOT_FOUND } = getInputs();
+  console.log('After First getInput Call');
 
   try {
     const { BRANCH_IGNORE_PATTERN } = getInputs();
