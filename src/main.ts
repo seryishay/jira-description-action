@@ -1,13 +1,8 @@
 import * as core from '@actions/core';
-console.log('1');
 import { shouldSkipBranch } from './utils';
-console.log('2');
 import { getInputs } from './action-inputs';
-console.log('3');
 import { GithubConnector } from './github-connector';
-console.log('4');
 import { JiraConnector } from './jira-connector';
-console.log('5');
 
 async function run(): Promise<void> {
   const { FAIL_WHEN_JIRA_ISSUE_NOT_FOUND } = getInputs();
