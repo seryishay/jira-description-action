@@ -5,10 +5,13 @@ import { GithubConnector } from './github-connector';
 import { JiraConnector } from './jira-connector';
 
 async function run(): Promise<void> {
+  console.log('1');
   const { FAIL_WHEN_JIRA_ISSUE_NOT_FOUND } = getInputs();
+  console.log('2');
   try {
+    console.log('3');
     const { BRANCH_IGNORE_PATTERN } = getInputs();
-
+    console.log('4');
     const githubConnector = new GithubConnector();
     const jiraConnector = new JiraConnector();
 
