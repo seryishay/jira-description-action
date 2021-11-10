@@ -1,14 +1,19 @@
 import * as core from '@actions/core';
+console.log('1');
 import { shouldSkipBranch } from './utils';
+console.log('2');
 import { getInputs } from './action-inputs';
+console.log('3');
 import { GithubConnector } from './github-connector';
+console.log('4');
 import { JiraConnector } from './jira-connector';
+console.log('5');
 
 async function run(): Promise<void> {
+  const { FAIL_WHEN_JIRA_ISSUE_NOT_FOUND } = getInputs();
+
   try {
-    console.log('3');
     const { BRANCH_IGNORE_PATTERN } = getInputs();
-    console.log('4');
     const githubConnector = new GithubConnector();
     const jiraConnector = new JiraConnector();
 
@@ -30,7 +35,6 @@ async function run(): Promise<void> {
     console.log('JIRA key was not found');
     core.error(error.message);
 
-    const { FAIL_WHEN_JIRA_ISSUE_NOT_FOUND } = getInputs();
     if (FAIL_WHEN_JIRA_ISSUE_NOT_FOUND) {
       core.setFailed(error.message);
       process.exit(1);
