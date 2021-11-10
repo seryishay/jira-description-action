@@ -23,7 +23,7 @@ export const getInputs = (): IActionInputs => {
       JIRA_BASE_URL: JIRA_BASE_URL.endsWith('/') ? JIRA_BASE_URL.replace(/\/$/, '') : JIRA_BASE_URL,
     };
   } catch (error) {
-    console.log('INside getInputes Error');
-    throw error;
+    core.error(error.message);
+    process.exit(1);
   }
 };
