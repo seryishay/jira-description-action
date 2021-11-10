@@ -8,9 +8,9 @@ export class JiraConnector {
   JIRA_BASE_URL: string;
 
   constructor() {
-    console.log('Before');
+    console.log('5');
     const { JIRA_TOKEN, JIRA_BASE_URL } = getInputs();
-    console.log('After');
+    console.log('6');
 
     this.JIRA_BASE_URL = JIRA_BASE_URL;
     this.JIRA_TOKEN = JIRA_TOKEN;
