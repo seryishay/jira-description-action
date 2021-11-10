@@ -8,7 +8,9 @@ export class JiraConnector {
   JIRA_BASE_URL: string;
 
   constructor() {
+    console.log('Before');
     const { JIRA_TOKEN, JIRA_BASE_URL } = getInputs();
+    console.log('After');
 
     this.JIRA_BASE_URL = JIRA_BASE_URL;
     this.JIRA_TOKEN = JIRA_TOKEN;
@@ -51,12 +53,8 @@ export class JiraConnector {
   }
 
   async getIssue(id: string): Promise<JIRA.Issue> {
-    try {
-      const url = `/issue/${id}?fields=project,summary,issuetype`;
-      const response = await this.client.get<JIRA.Issue>(url);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    const url = `/issue/${id}?fields=project,summary,issuetype`;
+    const response = await this.client.get<JIRA.Issue>(url);
+    return response.data;
   }
 }
